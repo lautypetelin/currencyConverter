@@ -1,11 +1,12 @@
 package com.lautaropetelin.currencyconverter.gui;
 
 import com.lautaropetelin.currencyconverter.service.ProveedorAPI;
-import com.lautaropetelin.currencyconverter.service.model.Conversion;
+import com.lautaropetelin.currencyconverter.model.Conversion;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,6 +21,7 @@ public class CurrencyConverterForm extends javax.swing.JFrame {
         format = DateTimeFormatter.ofPattern("HH:mm");
         
         initComponents();
+        cargarCombos();
         cargarTabla();
     }
 
@@ -54,13 +56,11 @@ public class CurrencyConverterForm extends javax.swing.JFrame {
         jlDe.setText("Pasar de:");
 
         cmbDe.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        cmbDe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "USD", "AED", "AFN", "ALL", "AMD", "ANG", "AOA", "ARS", "AUD", "AWG", "AZN", "BAM", "BBD", "BDT", "BGN", "BHD", "BIF", "BMD", "BND", "BOB", "BRL", "BSD", "BTN", "BWP", "BYN", "BZD", "CAD", "CDF", "CHF", "CLP", "CNY", "COP", "CRC", "CUP", "CVE", "CZK", "DJF", "DKK", "DOP", "DZD", "EGP", "ERN", "ETB", "EUR", "FJD", "FKP", "FOK", "GBP", "GEL", "GGP", "GHS", "GIP", "GMD", "GNF", "GTQ", "GYD", "HKD", "HNL", "HRK", "HTG", "HUF", "IDR", "ILS", "IMP", "INR", "IQD", "IRR", "ISK", "JEP", "JMD", "JOD", "JPY", "KES", "KGS", "KHR", "KID", "KMF", "KRW", "KWD", "KYD", "KZT", "LAK", "LBP", "LKR", "LRD", "LSL", "LYD", "MAD", "MDL", "MGA", "MKD", "MMK", "MNT", "MOP", "MRU", "MUR", "MVR", "MWK", "MXN", "MYR", "MZN", "NAD", "NGN", "NIO", "NOK", "NPR", "NZD", "OMR", "PAB", "PEN", "PGK", "PHP", "PKR", "PLN", "PYG", "QAR", "RON", "RSD", "RUB", "RWF", "SAR", "SBD", "SCR", "SDG", "SEK", "SGD", "SHP", "SLE", "SLL", "SOS", "SRD", "SSP", "STN", "SYP", "SZL", "THB", "TJS", "TMT", "TND", "TOP", "TRY", "TTD", "TVD", "TWD", "TZS", "UAH", "UGX", "UYU", "UZS", "VES", "VND", "VUV", "WST", "XAF", "XCD", "XDR", "XOF", "XPF", "YER", "ZAR", "ZMW", "ZWL" }));
 
         jlA.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jlA.setText("Pasar a:");
 
         cmbA.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        cmbA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "USD", "AED", "AFN", "ALL", "AMD", "ANG", "AOA", "ARS", "AUD", "AWG", "AZN", "BAM", "BBD", "BDT", "BGN", "BHD", "BIF", "BMD", "BND", "BOB", "BRL", "BSD", "BTN", "BWP", "BYN", "BZD", "CAD", "CDF", "CHF", "CLP", "CNY", "COP", "CRC", "CUP", "CVE", "CZK", "DJF", "DKK", "DOP", "DZD", "EGP", "ERN", "ETB", "EUR", "FJD", "FKP", "FOK", "GBP", "GEL", "GGP", "GHS", "GIP", "GMD", "GNF", "GTQ", "GYD", "HKD", "HNL", "HRK", "HTG", "HUF", "IDR", "ILS", "IMP", "INR", "IQD", "IRR", "ISK", "JEP", "JMD", "JOD", "JPY", "KES", "KGS", "KHR", "KID", "KMF", "KRW", "KWD", "KYD", "KZT", "LAK", "LBP", "LKR", "LRD", "LSL", "LYD", "MAD", "MDL", "MGA", "MKD", "MMK", "MNT", "MOP", "MRU", "MUR", "MVR", "MWK", "MXN", "MYR", "MZN", "NAD", "NGN", "NIO", "NOK", "NPR", "NZD", "OMR", "PAB", "PEN", "PGK", "PHP", "PKR", "PLN", "PYG", "QAR", "RON", "RSD", "RUB", "RWF", "SAR", "SBD", "SCR", "SDG", "SEK", "SGD", "SHP", "SLE", "SLL", "SOS", "SRD", "SSP", "STN", "SYP", "SZL", "THB", "TJS", "TMT", "TND", "TOP", "TRY", "TTD", "TVD", "TWD", "TZS", "UAH", "UGX", "UYU", "UZS", "VES", "VND", "VUV", "WST", "XAF", "XCD", "XDR", "XOF", "XPF", "YER", "ZAR", "ZMW", "ZWL" }));
 
         jlCantidad.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jlCantidad.setText("Cantidad:");
@@ -181,7 +181,7 @@ public class CurrencyConverterForm extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -250,11 +250,8 @@ public class CurrencyConverterForm extends javax.swing.JFrame {
             
         }catch(NumberFormatException nfe){
             JOptionPane.showMessageDialog(this, "Solo se permiten valores numéricos en el campo \'Cantidad\'.", "Error", JOptionPane.ERROR_MESSAGE);
+            txtCantidad.setText(null);
         }
-        
-                
-        
-        
     }//GEN-LAST:event_btnConvertirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -274,6 +271,31 @@ public class CurrencyConverterForm extends javax.swing.JFrame {
     private javax.swing.JTextField txtCantidad;
     // End of variables declaration//GEN-END:variables
 
+    private void cargarCombos() {
+        
+        DefaultComboBoxModel model1 = new DefaultComboBoxModel();
+        DefaultComboBoxModel model2 = new DefaultComboBoxModel();
+        
+        for(String rate: ProveedorAPI.getRate()){
+            model1.addElement(rate);
+            model2.addElement(rate);
+        }
+        
+        cmbDe.setModel(model1);
+        cmbA.setModel(model2);
+    }
+    
+    private void cargarCombo2() {
+        
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        
+        for(String rate: ProveedorAPI.getRate()){
+            model.addElement((String)rate);
+        }
+        
+        cmbA.setModel(model);
+    }
+
     private void cargarTabla() {
         
         // Establecer que no se puedan cambiar de lugar las columnas
@@ -288,9 +310,11 @@ public class CurrencyConverterForm extends javax.swing.JFrame {
             }
         };
         
+        // Establecer los nombres de cada columna
         String titulos[] = {"Cantidad","De","Resultado","A", "Hora"};
         model.setColumnIdentifiers(titulos);
         
+        // Cargar los registros consultados recientemente
         if(!this.conversiones.isEmpty()){
         
             for(Conversion conversion: this.conversiones){
@@ -299,6 +323,7 @@ public class CurrencyConverterForm extends javax.swing.JFrame {
             }
         }
         
+        // Asignar modelo a la tabla
         tblConversiones.setModel(model);
     }
 }

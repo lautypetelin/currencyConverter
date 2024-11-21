@@ -1,4 +1,4 @@
-package com.lautaropetelin.currencyconverter.service.model;
+package com.lautaropetelin.currencyconverter.model;
 
 public class Conversion {
     
