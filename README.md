@@ -1,69 +1,58 @@
 # Conversor de Moneda
 
-Esta aplicación es un conversor de divisas que utiliza la API de ExchangeRate para obtener las tasas de conversión entre distintas monedas. Permite realizar conversiones entre las siguientes monedas:
+Esta aplicación es un conversor de divisas que utiliza la API de ExchangeRate para obtener las tasas de conversión entre una amplia lista de distintas monedas.
 
-- Dólar estadounidense (USD)
-- Peso argentino (ARS)
-- Real brasileño (BRL)
-- Peso colombiano (COP)
+![Principal](https://github.com/user-attachments/assets/62dedf40-ee74-4127-b735-df9962563b85)
 
-## Funcionalidades
+## Funcionalidades del Sistema
 
-El usuario puede elegir entre las siguientes opciones de conversión:
-
-1. Dólar estadounidense (USD) → Peso argentino (ARS)
-2. Peso argentino (ARS) → Dólar estadounidense (USD)
-3. Dólar estadounidense (USD) → Real brasileño (BRL)
-4. Real brasileño (BRL) → Dólar estadounidense (USD)
-5. Dólar estadounidense (USD) → Peso colombiano (COP)
-6. Peso colombiano (COP) → Dólar estadounidense (USD)
-7. Salir del programa
-
-## Requisitos
-
-- JDK 11 o superior
-- Dependencias externas: [Gson](https://github.com/google/gson) para el procesamiento de datos JSON
-- Conexión a internet para realizar las consultas a la API
-
-## Estructura del Proyecto
-
-El proyecto cuenta con dos clases principales:
-
-### Main
-
-Esta clase contiene el ciclo principal de la aplicación, mostrando el menú de opciones al usuario y permitiendo la interacción con el conversor.
-
-#### Métodos principales:
-
-- `showMenu()`: Muestra el menú y recibe la opción del usuario.
-- `getValue()`: Solicita el valor a convertir.
-- `main()`: Controla el flujo del programa y realiza las conversiones utilizando la API de ExchangeRate.
-
-### ConsultaAPI
-
-Esta clase maneja las llamadas a la API de ExchangeRate para obtener las tasas de conversión actualizadas.
-
-#### Método principal:
-
-- `getConversionRate(String from, String to)`: Realiza la consulta a la API y devuelve la tasa de conversión entre las dos monedas especificadas.
+1. **Elegir la moneda base y la moneda a convertir**
+2. **Visualización del historial de consultas**
+3. **Validaciones para el correcto ingreso de datos**
 
 ## Uso
 
 1. Ejecutar el programa.
-2. Seleccionar una de las opciones del menú.
-3. Ingresar el monto que se desea convertir.
+2. Seleccionar en la primer lista desplegable la moneda base que desea convertir.
+
+    ![Opciones 2](https://github.com/user-attachments/assets/a03c4c07-1e37-416a-a211-a582ace74092)
+
+4. Seleccionar en la segunda lista despleglabe la moneda a la que desea convertir.
+
+    ![Opciones](https://github.com/user-attachments/assets/c07f4a5e-768c-4692-bfa4-e842c7a92911)
+
+5. Ingresar el monto que se desea convertir.
 4. El programa mostrará el resultado de la conversión.
-5. Repetir el proceso o salir del programa seleccionando la opción 7.
+5. La conversión y la hora de la misma se reflejara en la tabla.
+
+    ![Accion](https://github.com/user-attachments/assets/85c467df-3144-4d0f-aedc-5207e4ae40f7)
+
+7. Repetir el proceso o salir del programa.
 
 ### Configuración de la API
 
 Este proyecto utiliza la API de ExchangeRate para obtener las tasas de cambio actuales. Se requiere una clave de API válida, que se puede obtener registrándose en [ExchangeRate-API](https://www.exchangerate-api.com/).
 
 ## Clave de API
-Reemplazar la clave de API en la clase ConsultaAPI:
+Reemplazar la clave de API en la interfaz IKEY:
 
-```private static final String API_KEY = "TU_CLAVE_DE_API_AQUI";```
+![KEY](https://github.com/user-attachments/assets/baeb0cfe-14e1-4265-8268-ef4e66f34481)
 
-----------------------------------
+```public static final String KEY = "TU_CLAVE_DE_API_AQUI";```
 
-Esta aplicación ha sido ejecutada por ultima vez en IntelliJ IDEA y JDK 17. Si tienes alguna pregunta o comentario, no dudes en ponerte en contacto conmigo.
+## Desarrollo y Uso
+
+1. Clonar el repositorio.
+3. Ejecutar la aplicación.
+4. Utilizar la IGU para realizar las conversiones.
+
+## Créditos
+
+- **Desarrollado por**: Lautaro Tomás Israel Petelin
+- **Tecnologías utilizadas**: Java 17.0.6
+- **IDE**: Netbeans 17
+- **Autor de la consigna**: Alura Latam (ONE)
+
+## Contribuciones
+
+¡Las contribuciones son bienvenidas! Si encuentras algún problema o tienes sugerencias de mejora, no dudes en abrir un problema o enviar una pull request.
