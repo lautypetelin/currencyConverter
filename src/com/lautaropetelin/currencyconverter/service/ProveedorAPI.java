@@ -1,16 +1,16 @@
-package com.lautaropetelin.currencyconverter.requestApi;
+package com.lautaropetelin.currencyconverter.service;
 
 import com.google.gson.Gson;
-
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.List;
 import java.util.Map;
 
-public class ConsultaAPI {
+public class ProveedorAPI implements IKey{
 
-    private static final String API_KEY = "0313126688a08be61400f10c";
+    private static final String API_KEY = KEY;
     private static Gson gson = new Gson();
 
     public static double getConversionRate(String from, String to) {
