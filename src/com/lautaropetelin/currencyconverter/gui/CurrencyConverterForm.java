@@ -235,7 +235,8 @@ public class CurrencyConverterForm extends javax.swing.JFrame {
             }else{
                 result = cant;
             }
-
+            result = Math.round(result * 100d) / 100d; // Formatear resultado a 2 decimales.
+            
             // Agregar el registro de la conversión a la tabla
             LocalTime time = LocalTime.now(); // Hora actual
             String timeSt = time.format(format); //  Hora actual a texto formateada
@@ -250,6 +251,10 @@ public class CurrencyConverterForm extends javax.swing.JFrame {
         }catch(NumberFormatException nfe){
             JOptionPane.showMessageDialog(this, "Solo se permiten valores numéricos en el campo \'Cantidad\'.", "Error", JOptionPane.ERROR_MESSAGE);
         }
+        
+                
+        
+        
     }//GEN-LAST:event_btnConvertirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
